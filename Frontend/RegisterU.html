@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Register</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            animation: slideDown 0.5s ease-out;
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, #69c6d6 0%, #b636dd 100%);
+            padding: 60px 0;
+            color: white;
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="2"/></svg>') repeat;
+            opacity: 0.1;
+            animation: rotate 20s linear infinite;
+        }
+
+        .register-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            transform: translateY(20px);
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+            position: relative;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.5s ease-out forwards;
+        }
+
+        .form-group:nth-child(1) { animation-delay: 0.2s; }
+        .form-group:nth-child(2) { animation-delay: 0.3s; }
+        .form-group:nth-child(3) { animation-delay: 0.4s; }
+        .form-group:nth-child(4) { animation-delay: 0.5s; }
+        .form-group:nth-child(5) { animation-delay: 0.6s; }
+        .form-group:nth-child(6) { animation-delay: 0.7s; }
+        .form-group:nth-child(7) { animation-delay: 0.8s; }
+        .form-group:nth-child(8) { animation-delay: 0.9s; }
+        .form-group:nth-child(9) { animation-delay: 1s; }
+
+        .form-label {
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .form-control {
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 12px 15px;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        .form-control:focus {
+            border-color: #4a00e0;
+            box-shadow: 0 0 0 0.2rem rgba(74, 0, 224, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .form-control:hover {
+            border-color: #4a00e0;
+        }
+
+        .btn-register {
+            background: linear-gradient(90deg, #4a00e0, #8e2de2);
+            border: none;
+            border-radius: 30px;
+            padding: 12px 30px;
+            color: white;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-register:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(74, 0, 224, 0.3);
+        }
+
+        .btn-register:active {
+            transform: translateY(0);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-100%); }
+            to { transform: translateY(0); }
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 768px) {
+            .register-card {
+                padding: 30px;
+            }
+            
+            .hero-section {
+                padding: 40px 0;
+            }
+        }
+
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 15px 0;
+            animation: slideDown 0.5s ease-out;
+        }
+
+        .navbar-brand {
+            font-weight: 600;
+            font-size: 1.5rem;
+        }
+
+        .nav-link {
+            color: #333;
+            font-weight: 500;
+            padding: 8px 15px;
+            margin: 0 5px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #4a00e0;
+            background: rgba(74, 0, 224, 0.05);
+        }
+
+        .nav-link.active {
+            color: #4a00e0;
+            background: rgba(74, 0, 224, 0.1);
+        }
+
+        .navbar-toggler {
+            border: none;
+            padding: 0.5rem;
+        }
+
+        .navbar-toggler:focus {
+            box-shadow: none;
+        }
+
+        @media (max-width: 991.98px) {
+            .navbar-collapse {
+                background: rgba(255, 255, 255, 0.98);
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+                margin-top: 10px;
+            }
+
+            .nav-link {
+                padding: 10px 15px;
+                margin: 5px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="website images\blue png.png" alt="Logo" style="height: 40px;" class="me-2">
+                <span style="color: #1a8fb3d4;">Secure</span>
+                <span style="color: #83ce76;">Cloud</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home Page</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="DataOwner.html">Data Owner</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="ProxyServer.html">Proxy Server</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="CloudServer.html">CloudServer</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="EndUser.html">EndUser</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8 text-center">
+                    <h1 class="display-4 mb-3">Create Your User Account</h1>
+                    <p class="lead">Join our secure cloud platform and take control of your data</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="register-card">
+                    <form action="insertdata1.jsp" method="post" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="name" class="form-label">
+                                <i class="fas fa-user"></i>User Name <span class="required">*</span>
+                            </label>
+                            <input id="name" name="userid" class="form-control" required />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password" class="form-label">
+                                <i class="fas fa-lock"></i>Password <span class="required">*</span>
+                            </label>
+                            <input type="password" id="password" name="pass" class="form-control" required />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email" class="form-label">
+                                <i class="fas fa-envelope"></i>Email Address <span class="required">*</span>
+                            </label>
+                            <input type="email" id="email" name="email" class="form-control" required />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="mobile" class="form-label">
+                                <i class="fas fa-phone"></i>Mobile Number <span class="required">*</span>
+                            </label>
+                            <input type="tel" id="mobile" name="mobile" class="form-control" required />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="address" class="form-label">
+                                <i class="fas fa-map-marker-alt"></i>Your Address
+                            </label>
+                            <textarea id="address" name="address" class="form-control" rows="3"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="dob" class="form-label">
+                                <i class="fas fa-calendar"></i>Date of Birth <span class="required">*</span>
+                            </label>
+                            <input type="date" id="dob" name="dob" class="form-control" required />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="location" class="form-label">
+                                <i class="fas fa-map"></i>Enter Location <span class="required">*</span>
+                            </label>
+                            <input id="loc" name="location" class="form-control" required />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="cloudn" class="form-label">
+                                <i class="fas fa-cloud"></i>Select Cloud Server <span class="required">*</span>
+                            </label>
+                            <select id="s1" name="cname" class="form-control" required>
+                                <option value="">--Select--</option>
+                                <option>Rackspace</option>
+                                <option>Amazon S3</option>
+                                <option>Windows Azure</option>
+                                <option>Aliyun OSS</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="pic" class="form-label">
+                                <i class="fas fa-camera"></i>Select Profile Picture <span class="required">*</span>
+                            </label>
+                            <input type="file" id="pic" name="pic" class="form-control" required />
+                        </div>
+
+                        <div class="form-group text-center">
+                            <button type="submit" name="submit" class="btn btn-register">
+                                <i class="fas fa-user-plus me-2"></i>Register Now
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
