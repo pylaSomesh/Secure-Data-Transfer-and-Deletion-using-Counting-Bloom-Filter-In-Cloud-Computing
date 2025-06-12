@@ -1,4 +1,4 @@
-# 🔐 Secure Data Transfer and Deletion using Counting Bloom Filter (CBF) in Cloud Computing
+#  Secure Data Transfer and Deletion using Counting Bloom Filter (CBF) in Cloud Computing
 
 A Java-based cloud security project for **secure data transfer**, **verifiable deletion**, and **CBF-based presence tracking**.
 
